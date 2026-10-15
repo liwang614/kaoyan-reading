@@ -1,0 +1,14 @@
+services:
+  reading:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${BIND_ADDRESS:-127.0.0.1}:${APP_PORT:-8765}:8765"
+    environment:
+      BASIC_AUTH_USER: ${BASIC_AUTH_USER:-admin}
+      BASIC_AUTH_PASSWORD: ${BASIC_AUTH_PASSWORD:?请先复制 .env.example 为 .env 并填写访问密码}
+    volumes:
+      - reading-data:/data
+
+volumes:
+  reading-data:

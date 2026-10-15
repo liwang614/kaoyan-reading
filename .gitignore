@@ -1,0 +1,13 @@
+# 学习记录只在本机或部署平台的数据盘保存
+/data/
+/.claude/
+.env
+.env.*
+!.env.example
+.DS_Store
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+/work/
+/outputs/

@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: kaoyan-reading
+    runtime: python
+    region: singapore
+    plan: 0.5c-512mb
+    buildCommand: python -m compileall -q server.py
+    startCommand: python server.py --no-browser
+    healthCheckPath: /healthz
+    autoDeployTrigger: commit
+    disk:
+      name: reading-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: KAOYAN_DATA_DIR
+        value: /var/data
+      - key: BASIC_AUTH_USER
+        value: admin
+      - key: BASIC_AUTH_PASSWORD
+        sync: false

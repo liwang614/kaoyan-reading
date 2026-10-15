@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>考研阅读 · 生词难句</title>
+  <script>
+    // 首屏前套用保存的配色，避免先闪一下默认色
+    try {
+      var t = JSON.parse(localStorage.getItem('theme') || '{}'), r = document.documentElement;
+      if (t.h != null) r.style.setProperty('--h', t.h);
+      if (t.sat != null) r.style.setProperty('--sat', t.sat / 100);
+      if (t.glow != null) r.style.setProperty('--glow', t.glow / 100);
+      if (t.mode === 'light' || t.mode === 'dark') r.dataset.theme = t.mode;
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app"></div>
+  <div id="pop" class="pop" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+
+  <div id="themePanel" class="theme-panel" hidden>
+    <div class="tp-head">
+      <b>配色</b>
+      <button class="tp-close" data-tp-close title="关闭">✕</button>
+    </div>
+    <div class="tp-label">预设色调</div>
+    <div class="swatches" id="swatches"></div>
+    <div class="tp-label">自定义色相 <span id="hueVal"></span></div>
+    <input type="range" class="tp-range hue" id="tpHue" min="0" max="359" step="1">
+    <div class="tp-label">色彩浓度 <span id="satVal"></span></div>
+    <input type="range" class="tp-range sat" id="tpSat" min="5" max="120" step="1">
+    <div class="tp-label">背景光晕 <span id="glowVal"></span></div>
+    <input type="range" class="tp-range glow" id="tpGlow" min="0" max="160" step="1">
+    <div class="tp-label">明暗</div>
+    <div class="seg tp-mode" id="themeMode">
+      <button data-mode="system">跟随系统</button>
+      <button data-mode="light">浅色</button>
+      <button data-mode="dark">深色</button>
+    </div>
+    <button class="link tp-reset" data-tp-reset>恢复默认</button>
+  </div>
+
+  <script src="tracker.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
