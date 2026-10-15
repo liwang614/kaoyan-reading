@@ -14,6 +14,39 @@
 
 本地文件存储规则由浏览器决定；如果浏览器限制本地文件存储，请换一个允许存储的常规浏览器。双击版不会读取原 Python 服务 `data/` 中的记录，也不会改动它们。
 
+## 命令行克隆与更新
+
+已安装 Git 的用户，可以在终端执行以下命令克隆仓库：
+
+```bash
+git clone https://github.com/liwang614/kaoyan-reading.git
+cd kaoyan-reading
+```
+
+然后双击文件夹里的 `打开即用.html`，也可以用命令直接打开：
+
+macOS：
+
+```bash
+open "打开即用.html"
+```
+
+Windows（PowerShell）：
+
+```powershell
+Start-Process ".\打开即用.html"
+```
+
+以后更新，在 `kaoyan-reading` 文件夹内执行：
+
+```bash
+git pull --ff-only
+```
+
+更新后重新打开或刷新 `打开即用.html`。保持文件位置和使用的浏览器不变，原有学习记录仍保存在浏览器中；更新前也可以点击“备份数据”留一份备份。
+
+仓库目前为私有，需要先获得访问权限，并使用有权限的 GitHub 账号完成 Git 身份验证。没有安装 Git 也可以使用仓库页面的 **Code → Download ZIP**，解压后双击同一 HTML 文件。
+
 ## 可选：原 Python 服务版
 
 已经安装 Python 3 的 Mac 也可以双击 `start.command`；或运行 `python3 server.py`，浏览器会自动打开 `http://127.0.0.1:8765`。此模式仍使用项目目录中的 `data/` 保存记录，与 HTML 双击版的数据独立。
